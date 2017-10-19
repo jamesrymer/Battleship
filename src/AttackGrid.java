@@ -5,7 +5,8 @@ import java.io.*;
 import java.net.*;
 
 /**
-Represents the player's own grid
+Represents the player's own grid kwnjdkjnqwdknqwd
+
 */
 public class AttackGrid extends BattleGrid {
     public AttackGrid(String name) {

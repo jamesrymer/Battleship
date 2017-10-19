@@ -29,4 +29,8 @@ public class PlayerScreen extends JFrame {
     public void hideScreen() {
         this.setVisible(false);
     }
+    
+    public void sys(String text) {
+    	System.out.println(text);
+    }
 }

@@ -1,4 +1,4 @@
-
+//state machine should probably go in Battleship class...
 public class BattleShip {
     public static void main(String[] args) {
 

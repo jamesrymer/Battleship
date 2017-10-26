@@ -7,6 +7,7 @@ import java.net.*;
 //this is the second test comment 
 
 public class PlayerScreen extends JFrame {
+	
     public PlayerScreen(String name, boolean show) {
         super(name);
         this.setLayout(new BorderLayout());
@@ -31,33 +32,16 @@ public class PlayerScreen extends JFrame {
         });
         
         
-        Container pane = new Container();
-        pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
-        JButton btnNumberOfShips = new JButton("Number of Own Ships");
-        JButton btnShipsLeft= new JButton("Own ships sunk");
-        JButton btnEnemySunk = new JButton("Number of Enemy Ships Sunk");
-        pane.add(btnNumberOfShips);
-        pane.add(btnShipsLeft);
-        pane.add(btnEnemySunk);
+       
         
         
-        btnNumberOfShips.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent f){
-                JLabel displayNumberOfShips = new JLabel("You have [] ships");
-                pane.add(displayNumberOfShips);
-            }
-        });
-
-        
+       
        
         
         this.add(new SelfGrid(name), BorderLayout.EAST);
         this.add(new AttackGrid(name), BorderLayout.WEST);
         this.add(new JLabel(name), BorderLayout.NORTH);
-<<<<<<< HEAD
-        
-=======
->>>>>>> 9cdc5fd4983bd750a76dd7a9a0dc645b19f0cc51
+
         this.add(pane,BorderLayout.SOUTH);
         
         JButton next = new JButton("next");

@@ -32,11 +32,6 @@ public class PlayerScreen extends JFrame {
         });
         
         
-       
-        
-        
-       
-       
         
         this.add(new SelfGrid(name), BorderLayout.EAST);
         this.add(new AttackGrid(name), BorderLayout.WEST);

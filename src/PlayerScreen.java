@@ -11,7 +11,7 @@ public class PlayerScreen extends JFrame {
     public PlayerScreen(String name, boolean show) {
         super(name);
         this.setLayout(new BorderLayout());
-       Container paneWest = new Container();
+        Container paneWest = new Container();
         Container paneEast = new Container();
         paneWest.setLayout(new BoxLayout(paneWest,BoxLayout.Y_AXIS));
         JLabel labelNumberShips = new JLabel("Number of Own Ships:");
@@ -49,7 +49,7 @@ public class PlayerScreen extends JFrame {
         this.add(new AttackGrid(name), BorderLayout.WEST);
         this.add(new JLabel(name), BorderLayout.NORTH);
 
-        this.add(pane,BorderLayout.SOUTH);
+        this.add(panel,BorderLayout.SOUTH);
         
         JButton next = new JButton("next");
         next.addActionListener(new ActionListener() {

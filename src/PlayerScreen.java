@@ -11,28 +11,40 @@ public class PlayerScreen extends JFrame {
     public PlayerScreen(String name, boolean show) {
         super(name);
         this.setLayout(new BorderLayout());
-       
-            
+       Container paneWest = new Container();
+        Container paneEast = new Container();
+        paneWest.setLayout(new BoxLayout(paneWest,BoxLayout.Y_AXIS));
+        JLabel labelNumberShips = new JLabel("Number of Own Ships:");
+        JLabel displayNumber;
+        JLabel labelShips= new JLabel("Number of Own Ships Sunk:");
+        JLabel displayShips;
+        JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:");
+        JLabel displaySunk; 
+        JLabel stateLabel = new JLabel("Current State:");
+        JLabel displayState;
         
-        Container pane = new Container();
-        pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
-        JButton btnNumberOfShips = new JButton("Number of Own Ships");
-        JButton btnShipsLeft= new JButton("Own ships sunk");
-        JButton btnEnemySunk = new JButton("Number of Enemy Ships Sunk");
-        pane.add(btnNumberOfShips);
-        pane.add(btnShipsLeft);
-        pane.add(btnEnemySunk);
+        paneWest.add(labelNumberShips);
+        paneWest.add(labelShips);
+        paneWest.add(labelSunk);
+        paneWest.add(stateLabel);
+       /* paneEast.add(displayNumber);
+        paneEast.add(displayShips);
+        paneEast.add(displaySunk);
+        paneEast.add(displayState);*/
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
         
         
-        btnNumberOfShips.addActionListener(new ActionListener() {
+        /*btnNumberOfShips.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent f){
-                JLabel displayNumberOfShips = new JLabel("You have [] ships");
-                pane.add(displayNumberOfShips);
-            }
-        });
-        
-        
-        
+                JLabel displayNumberOfShips = new JLabel("You have");
+                panel.add(displayNumberOfShips,BorderLayout.CENTER);
+                        }
+        });*/
+            
+        panel.add(paneWest,BorderLayout.WEST);
+        panel.add(paneEast,BorderLayout.EAST);
         this.add(new SelfGrid(name), BorderLayout.EAST);
         this.add(new AttackGrid(name), BorderLayout.WEST);
         this.add(new JLabel(name), BorderLayout.NORTH);

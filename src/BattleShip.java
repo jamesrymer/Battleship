@@ -1,6 +1,10 @@
 //state machine should probably go in Battleship class...
-public class BattleShip implements State {
+public class BattleShip {
 	public State state;
+	
+	private BattleShip(State state){
+		this.state = state;
+	}
 	public void setState(State state) {
 		this.state = state;
 	}

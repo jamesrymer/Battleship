@@ -5,6 +5,7 @@ public class battleshipState implements State {
 	private battleshipState(State state) {
 		this.state = state;
 	}
+	//added comment
 	
 	
 }

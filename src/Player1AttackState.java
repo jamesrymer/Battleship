@@ -1,9 +1,9 @@
 
 public class Player1AttackState implements State{
 	public void start(BattleShip myShip){
-		PlayerScreen player1 = new PlayerScreen("Player1", true);
-		//do stuff to place ships on player1 board here
-		//then set wrapper class state to player2Setup
+		//do stuff to process the players attack
+		//do stuff to determine the result
+		//then set wrapper class state to player2attack if game is not over
 		myShip.setState(new Player2AttackState());
 	}
 

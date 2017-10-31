@@ -1,5 +1,6 @@
 //state machine should probably go in Battleship class...
 public class BattleShip {
+	
 	public State state;
 	
 	private BattleShip(State state){
@@ -11,7 +12,6 @@ public class BattleShip {
 	public State getState() {
 		return this.state;
 	}
-	
 	public void play(){
 		state.start(this);
 	}

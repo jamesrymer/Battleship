@@ -8,14 +8,14 @@ public class Player1SetupState implements State {
 		return name;
 	}
 	public void start(BattleShip myShip){
-		//myShip.createPlayer("player 1");
-		//do stuff to place ships on player1 board here
-		//$$$$$
-		//then set wrapper class state to player2Setup when player 1 setup is done
-		//consider adding a next button to automatically move to next state 
-		//myShip.setState(new Player2SetupState());
+		myShip.createPlayer1();
+		//do stuff to detect mouse clicks and place ships on player1 board here
+		System.out.println(myShip.getState());
+
+		
 	}
 	public void nextState(BattleShip myShip){
 		myShip.setState(new Player2SetupState());
+		myShip.play();
 	}
 }

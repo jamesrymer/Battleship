@@ -7,7 +7,7 @@ public class GameOverState implements State{
 	}
 	public void nextState(BattleShip myShip){
 		myShip.setState(new Player1SetupState());
-
+		myShip.play();
 	}
 
 }

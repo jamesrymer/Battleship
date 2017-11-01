@@ -10,21 +10,26 @@ public class PlayerScreen extends JFrame {
 	
     public PlayerScreen(String name, boolean show, BattleShip thisGame) {
         super(name);
-        PlayerData play1 = new PlayerData();   
-	    
+        PlayerData screenData = new PlayerData();   
+	    if(name == "Player1"){   //copy over the appropriate data for the given player to populate screen
+	    	screenData = thisGame.getData(1);
+	    }
+	    if(name == "Player2"){
+	    	screenData = thisGame.getData(2);
+	    }
         this.setLayout(new BorderLayout());	
         Container paneWest = new Container();
         Container paneEast = new Container();
         paneWest.setLayout(new BoxLayout(paneWest,BoxLayout.Y_AXIS));
 	    
         JLabel labelNumberShips = new JLabel("Number of Own Ships:");
-        JLabel displayNumber = new JLabel(String.valueOf(play1.getNumShips()));
+        JLabel displayNumber = new JLabel(String.valueOf(screenData.getNumShips()));
 	    
         JLabel labelShips= new JLabel("Number of Own Ships Sunk:");
-        JLabel displayShips = new JLabel(String.valueOf(play1.getNumSelfShipsSunk()));
+        JLabel displayShips = new JLabel(String.valueOf(screenData.getNumSelfShipsSunk()));
 	    
         JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:");
-        JLabel displaySunk = new JLabel(String.valueOf(play1.getNumEnemyShipsSunk()));
+        JLabel displaySunk = new JLabel(String.valueOf(screenData.getNumEnemyShipsSunk()));
 	    
         JLabel stateLabel = new JLabel("Current State:");
         JLabel displayState = new JLabel(thisGame.getState());
@@ -37,7 +42,7 @@ public class PlayerScreen extends JFrame {
         paneEast.add(displayNumber);
         paneEast.add(displayShips);
         paneEast.add(displaySunk);
-        //paneEast.add(displayState);
+        paneEast.add(displayState);
         
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());

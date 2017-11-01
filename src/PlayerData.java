@@ -1,12 +1,13 @@
 
 public class PlayerData {
-	private int attackGrid [][] = new int [10][10];
-	private int selfGrid [][] = new int [10][10];
+	private int attackGrid [][]; //= new int [10][10];
+	private int selfGrid [][]; //= new int [10][10];
 	
 	
-	private int numShips = 0;
-	private  int numSelfShipsSunk = 0;
-	private  int numEnemyShipsSunk = 0;
+	private int numShips;
+	private  int numSelfShipsSunk;
+	private  int numEnemyShipsSunk;
+	
 	public PlayerData(int attackGrid [][] , int battleGrid [][], int numShips, int numSelfShipsSunk, int numEnemyShipsSunk ) {
 		this.attackGrid = attackGrid;
 		this.selfGrid = battleGrid;
@@ -16,11 +17,11 @@ public class PlayerData {
 	}
 	
 	public PlayerData() {
-		this.attackGrid = attackGrid;
-		this.selfGrid = battleGrid;
-		this.numShips = numShips;
-		this.numSelfShipsSunk = numSelfShipsSunk;
-		this.numEnemyShipsSunk = numEnemyShipsSunk;
+		this.attackGrid =  new int [10][10];
+		this.selfGrid = new int [10][10];
+		this.numShips = 5;  //each player starts with 5 ships per assignment instructions
+		this.numSelfShipsSunk = 0;
+		this.numEnemyShipsSunk = 0;
 	}
 	
 	public int[][] getAttackGrid() {

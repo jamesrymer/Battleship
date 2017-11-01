@@ -15,6 +15,14 @@ public class PlayerData {
 		this.numEnemyShipsSunk = numEnemyShipsSunk;
 	}
 	
+	public PlayerData() {
+		this.attackGrid = attackGrid;
+		this.selfGrid = battleGrid;
+		this.numShips = numShips;
+		this.numSelfShipsSunk = numSelfShipsSunk;
+		this.numEnemyShipsSunk = numEnemyShipsSunk;
+	}
+	
 	public int[][] getAttackGrid() {
 		return attackGrid;
 	}

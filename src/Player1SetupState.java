@@ -15,4 +15,7 @@ public class Player1SetupState implements State {
 		//consider adding a next button to automatically move to next state 
 		//myShip.setState(new Player2SetupState());
 	}
+	public void nextState(BattleShip myShip){
+		myShip.setState(new Player2SetupState());
+	}
 }

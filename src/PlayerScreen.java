@@ -8,7 +8,7 @@ import java.net.*;
 
 public class PlayerScreen extends JFrame {
 	
-    public PlayerScreen(String name, boolean show) {
+    public PlayerScreen(String name, boolean show, BattleShip thisGame) {
         super(name);
         PlayerData play1 = new PlayerData();   
 	    
@@ -27,7 +27,7 @@ public class PlayerScreen extends JFrame {
         JLabel displaySunk = new JLabel(String.valueOf(play1.getNumEnemyShipsSunk()));
 	    
         JLabel stateLabel = new JLabel("Current State:");
-        JLabel displayState;
+        JLabel displayState = new JLabel(thisGame.getState());
         
         paneWest.add(labelNumberShips);
         paneWest.add(labelShips);
@@ -61,6 +61,7 @@ public class PlayerScreen extends JFrame {
         JButton next = new JButton("next");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	thisGame.state.nextState(thisGame);
                 hideScreen();
             }
         });

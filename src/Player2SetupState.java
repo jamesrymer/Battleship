@@ -1,7 +1,12 @@
 
 public class Player2SetupState implements State{
+	public String name = "Player2SetupState";
+	
+	public String toString(){
+		return name;
+	}
 	public void start(BattleShip myShip){
-		PlayerScreen player2 = new PlayerScreen("Player2", true);
+		//myShip.createPlayer2();
 		//do stuff to place ships on board here
 		//$$$$$
 		//then set wrapper class state to Player1 attack state

@@ -3,14 +3,18 @@ public class BattleShip {
 	
 	public State state;
 	
+	private void createPlayer(String playerNumber){
+		//PlayerScreen = new PlayerScreen()
+	}
+	
 	private BattleShip(State state){
 		this.state = state;
 	}
 	public void setState(State state) {
 		this.state = state;
 	}
-	public State getState() {
-		return this.state;
+	public String getState() {
+		return this.state.toString();
 	}
 	public void play(){
 		state.start(this);
@@ -21,5 +25,6 @@ public class BattleShip {
     	State initialState = new Player1SetupState(); //construct initial game state
     	BattleShip myGame = new BattleShip(initialState);  //construct game and give it that initial game state
     	myGame.play();  //start the game doing setup stuff in the initial state, should run from there
+    	System.out.println(myGame.getState());
     }
 }

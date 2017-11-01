@@ -10,9 +10,9 @@ public class PlayerScreen extends JFrame {
 	
     public PlayerScreen(String name, boolean show) {
         super(name);
-	PlayerData play1 = new PlayerData();   
+        PlayerData play1 = new PlayerData();   
 	    
-        this.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());	
         Container paneWest = new Container();
         Container paneEast = new Container();
         paneWest.setLayout(new BoxLayout(paneWest,BoxLayout.Y_AXIS));

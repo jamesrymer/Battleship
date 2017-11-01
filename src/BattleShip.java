@@ -1,4 +1,4 @@
-//state machine should probably go in Battleship class...
+//state machine should probably go in Battleship class...thats a good idea...
 public class BattleShip {
 	
 	public State state;
@@ -20,6 +20,6 @@ public class BattleShip {
         //PlayerScreen player2 = new PlayerScreen("Player2", true);
     	State initialState = new Player1SetupState(); //construct initial game state
     	BattleShip myGame = new BattleShip(initialState);  //construct game and give it that initial game state
-    	myGame.state.start(myGame);  //start the game doing setup stuff in the initial state, should run from there
+    	myGame.play();  //start the game doing setup stuff in the initial state, should run from there
     }
 }

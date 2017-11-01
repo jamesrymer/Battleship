@@ -10,16 +10,22 @@ public class PlayerScreen extends JFrame {
 	
     public PlayerScreen(String name, boolean show) {
         super(name);
+	PlayerData play1 = new PlayerData();   
+	    
         this.setLayout(new BorderLayout());
         Container paneWest = new Container();
         Container paneEast = new Container();
         paneWest.setLayout(new BoxLayout(paneWest,BoxLayout.Y_AXIS));
+	    
         JLabel labelNumberShips = new JLabel("Number of Own Ships:");
-        JLabel displayNumber;
+        JLabel displayNumber = new JLabel(String.valueOf(play1.getNumShips()));
+	    
         JLabel labelShips= new JLabel("Number of Own Ships Sunk:");
-        JLabel displayShips;
+        JLabel displayShips = new JLabel(String.valueOf(play1.getNumSelfShipsSunk()));
+	    
         JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:");
-        JLabel displaySunk; 
+        JLabel displaySunk = new JLabel(String.valueOf(play1.getNumEnemyShipsSunk()));
+	    
         JLabel stateLabel = new JLabel("Current State:");
         JLabel displayState;
         
@@ -27,10 +33,11 @@ public class PlayerScreen extends JFrame {
         paneWest.add(labelShips);
         paneWest.add(labelSunk);
         paneWest.add(stateLabel);
-       /* paneEast.add(displayNumber);
+	    
+        paneEast.add(displayNumber);
         paneEast.add(displayShips);
         paneEast.add(displaySunk);
-        paneEast.add(displayState);*/
+        //paneEast.add(displayState);
         
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());

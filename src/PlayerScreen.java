@@ -22,16 +22,16 @@ public class PlayerScreen extends JFrame {
         Container paneEast = new Container();
         paneWest.setLayout(new BoxLayout(paneWest,BoxLayout.Y_AXIS));
 	    
-        JLabel labelNumberShips = new JLabel("Number of Own Ships:");
+        JLabel labelNumberShips = new JLabel("Number of Own Ships:  " + screenData.getNumShips());
         JLabel displayNumber = new JLabel(String.valueOf(screenData.getNumShips()));
 	    
-        JLabel labelShips= new JLabel("Number of Own Ships Sunk:");
+        JLabel labelShips= new JLabel("Number of Own Ships Sunk:  " + screenData.getNumSelfShipsSunk());
         JLabel displayShips = new JLabel(String.valueOf(screenData.getNumSelfShipsSunk()));
 	    
-        JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:");
+        JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:  " + screenData.getNumEnemyShipsSunk());
         JLabel displaySunk = new JLabel(String.valueOf(screenData.getNumEnemyShipsSunk()));
 	    
-        JLabel stateLabel = new JLabel("Current State:");
+        JLabel stateLabel = new JLabel("Current State:  " + thisGame.getState());
         JLabel displayState = new JLabel(thisGame.getState());
         
         paneWest.add(labelNumberShips);

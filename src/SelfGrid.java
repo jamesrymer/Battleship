@@ -21,11 +21,18 @@ public class SelfGrid extends BattleGrid {
         panel.setBackground(Color.black);
         panel.setBorder(BorderFactory.createLineBorder(Color.blue, 1));
         panel.setPreferredSize(new Dimension(50, 50)); // for demo purposes only
-
-        if( player.getSelfGridContent(i, j)== 1)
+        System.out.println(player.getSelfGridContent(2, 2));
+        if( player.getSelfGridContent(i, j)== 1 || player.getSelfGridContent(i, j)== 2 || player.getSelfGridContent(i, j)== 3 ){
+        		//System.out.println("red tile marked for ship placement...");
         		panel.setBackground(Color.RED);
+        		
+        }
+        if( player.getSelfGridContent(i, j)== 10 || player.getSelfGridContent(i, j)== 20 || player.getSelfGridContent(i, j)== 30 )
+    		panel.setBackground(Color.ORANGE);
+        if( player.getSelfGridContent(i, j)== 4)
+    		panel.setBackground(Color.WHITE);
         else 
-        	panel.setBackground(Color.black);
+        	panel.setBackground(Color.BLACK);
         
         panel.addMouseListener(new MouseAdapter() { 
             public void mouseClicked(MouseEvent me) { 

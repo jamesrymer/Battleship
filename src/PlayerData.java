@@ -35,24 +35,24 @@ public class PlayerData {
 
 		//}
 	public void assignShip(int i, int j){
-		if(j == 8 && selfGrid[i][j] != 1 && selfGrid[i][j-1] != 1 &&  selfGrid[i][j+1] != 1 ){
-			selfGrid[i][j] = 1;
+		if(j == 8 && selfGrid[i][j] == 0 && selfGrid[i][j-1] == 0 &&  selfGrid[i][j+1] == 0 ){
+			selfGrid[i][j] = 2;
 			selfGrid[i][j-1] = 1;
-			selfGrid[i][j+1] = 1;
+			selfGrid[i][j+1] = 3;
 			System.out.println("ship assigned...");
 			//panel.setBackground(Color.RED);
 		}
-		if(j == 9 && selfGrid[i][j] != 1 && selfGrid[i][j-1] != 1 &&  selfGrid[i][j-2] != 1 ){
-			selfGrid[i][j] = 1;
-			selfGrid[i][j-1] = 1;
+		if(j == 9 && selfGrid[i][j] == 0 && selfGrid[i][j-1] == 0 &&  selfGrid[i][j-2] == 0 ){
+			selfGrid[i][j] = 3;
+			selfGrid[i][j-1] = 2;
 			selfGrid[i][j-2] = 1;
 			System.out.println("ship assigned...");
 
 		}
-		if(selfGrid[i][j] != 1 && selfGrid[i][j+1] != 1 &&  selfGrid[i][j+2] != 1  ){
+		if(selfGrid[i][j] == 0 && selfGrid[i][j+1] == 0 &&  selfGrid[i][j+2] == 0  ){
 			selfGrid[i][j] = 1;
-			selfGrid[i][j+1] = 1;
-			selfGrid[i][j+2] = 1;
+			selfGrid[i][j+1] = 2;
+			selfGrid[i][j+2] = 3;
 			System.out.println("ship assigned...");
 
 		}
@@ -93,6 +93,17 @@ public class PlayerData {
 	public void setNumEnemyShipsSunk(int numEnemyShipsSunk) {
 		this.numEnemyShipsSunk = numEnemyShipsSunk;
 	}
+	public void processAttack(int i, int j){
+		if(this.selfGrid[i][j]==1 ||this.selfGrid[i][j]==2 || this.selfGrid[i][j]==3){
+			//mark the ship segment located here as dead
+			this.selfGrid[i][j] *= 10;
+		}
+		if(this.selfGrid[i][j]==0){
+			this.selfGrid[i][j]=4;
+		}
+	}
+	
+	
 }
 
 

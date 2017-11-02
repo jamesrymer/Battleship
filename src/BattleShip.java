@@ -3,14 +3,14 @@ public class BattleShip {
 	
 	public State state;
 	
-	//player 1 data and player screen
+	//player data
 	
 	PlayerData player1Data;
 	PlayerData player2Data;
 	
-	//player 2 data and player screen
+	//player screens
 	PlayerScreen player1Screen;
-	PlayerScreen player2Screen;
+	PlayerScreen player2Screen; //we can probably just use one screen and reference different data depending on the name we pass in 
 	
 	public void createPlayer1(){
 		player1Data = new PlayerData();
@@ -39,7 +39,9 @@ public class BattleShip {
 	    	System.out.println("Player 2 data copied...");
 			return player2Data;
 		}
-		else return null;
+		else
+			System.out.println("Player data copy fail:  invalid argument");
+			return null;
 	}
 	public void play(){
 		state.start(this);

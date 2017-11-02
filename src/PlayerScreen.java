@@ -9,7 +9,7 @@ import java.net.*;
 public class PlayerScreen extends JFrame {
 	
     public PlayerScreen(String name, boolean show, BattleShip thisGame) {
-        super(name);
+        super("BATTLESHIP");
         PlayerData screenData = new PlayerData();   
 	    if(name == "Player1"){   //copy over the appropriate data for the given player to populate screen
 	    	screenData = thisGame.getData(1);

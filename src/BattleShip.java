@@ -8,7 +8,7 @@ public class BattleShip {
 	PlayerData player1Data;
 	PlayerData player2Data;
 	
-	//player screens
+	//player screen
 	PlayerScreen player1Screen;
 	PlayerScreen player2Screen; //we can probably just use one screen and reference different data depending on the name we pass in 
 	

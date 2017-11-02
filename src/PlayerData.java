@@ -93,6 +93,9 @@ public class PlayerData {
 	public void setNumEnemyShipsSunk(int numEnemyShipsSunk) {
 		this.numEnemyShipsSunk = numEnemyShipsSunk;
 	}
+	public void recordAttack(int i, int j){
+		selfGrid[i][j] = 0;  //change a ship to an empty spot, simplest way to record destruction for now
+	}
 }
 
 

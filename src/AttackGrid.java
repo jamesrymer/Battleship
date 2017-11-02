@@ -24,6 +24,11 @@ public class AttackGrid extends BattleGrid {
         }
         
     }
+    
+    /*public void processAttack(int i, int j){
+    	System.out.println("inside process attack method with coordinates: " + i + j);
+    	
+    }*/
 
     @Override
     protected JPanel getCell(int i, int j)
@@ -39,6 +44,9 @@ public class AttackGrid extends BattleGrid {
             		//put call here to destroy ship if it is on coords
             		if(opponentData.getSelfGridContent(i, j)==1){
             			//kill the ship there
+            			System.out.println("ship detected at point of attack!");
+            			//processAttack(i, j);
+            			opponentData.recordAttack(i, j);
             		}
             	}
               } 

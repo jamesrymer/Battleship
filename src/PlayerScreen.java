@@ -57,8 +57,8 @@ public class PlayerScreen extends JFrame {
             
         panel.add(paneWest,BorderLayout.WEST);
         panel.add(paneEast,BorderLayout.EAST);
-        this.add(new SelfGrid(name, screenData), BorderLayout.EAST);
-        this.add(new AttackGrid(name, screenData), BorderLayout.WEST);
+        this.add(new SelfGrid(name, screenData, thisGame), BorderLayout.EAST);
+        this.add(new AttackGrid(name, screenData, thisGame), BorderLayout.WEST);
         this.add(new JLabel(name), BorderLayout.NORTH);
 
         this.add(panel,BorderLayout.SOUTH);

@@ -20,6 +20,12 @@ public class BattleShip {
 		player2Data = new PlayerData();
 		player2Screen = new PlayerScreen("Player2", true, this);
 	}
+	public void player1Attack(){
+		player1Screen = new PlayerScreen("Player1", true, this);
+	}
+	public void player2Attack(){
+		player2Screen = new PlayerScreen("Player2", true, this);
+	}
 	
 	private BattleShip(State state){
 		this.state = state;

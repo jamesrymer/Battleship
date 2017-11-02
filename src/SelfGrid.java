@@ -8,10 +8,12 @@ import java.net.*;
 Represents the player's own grid
 */
 public class SelfGrid extends BattleGrid {
-    public SelfGrid(String name, PlayerData p) {
+	String currentState;
+    public SelfGrid(String name, PlayerData p, BattleShip myGame) {
         super(p);
-        
+        currentState = myGame.getState();
     }
+    
 
     protected JPanel getCell(int i, int j)
     {
@@ -27,8 +29,10 @@ public class SelfGrid extends BattleGrid {
         
         panel.addMouseListener(new MouseAdapter() { 
             public void mouseClicked(MouseEvent me) { 
-                System.out.println("you clicked self cell"); 
-                player.assignShip(i,j);
+            	if(currentState == "Player1SetupState" || currentState == "Player2SetupState"){
+            		System.out.println("you clicked self cell"); 
+            		player.assignShip(i,j);
+            	}
               } 
             });
         return panel;

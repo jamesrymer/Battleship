@@ -8,21 +8,27 @@ import java.net.*;
 Represents the player's own grid
 */
 public class SelfGrid extends BattleGrid {
-    public SelfGrid(String name) {
-        super();
+    public SelfGrid(String name, PlayerData p) {
+        super(p);
         
     }
 
-    @Override
-    protected JPanel getCell()
+    protected JPanel getCell(int i, int j)
     {
         JPanel panel = new JPanel();
         panel.setBackground(Color.black);
-        panel.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
-        panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
+        panel.setBorder(BorderFactory.createLineBorder(Color.blue, 1));
+        panel.setPreferredSize(new Dimension(50, 50)); // for demo purposes only
+
+        if( player.getSelfGridContent(i, j)== 1)
+        		panel.setBackground(Color.RED);
+        else 
+        	panel.setBackground(Color.black);
+        
         panel.addMouseListener(new MouseAdapter() { 
             public void mouseClicked(MouseEvent me) { 
                 System.out.println("you clicked self cell"); 
+                player.assignShip(i,j);
               } 
             });
         return panel;

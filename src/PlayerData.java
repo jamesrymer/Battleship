@@ -1,13 +1,13 @@
-
 public class PlayerData {
-	private int attackGrid [][]; //= new int [10][10];
-	private int selfGrid [][]; //= new int [10][10];
+    
+	public int attackGrid [][] = new int [10][10];
+        
+	public int selfGrid [][] = new int [10][10];
 	
 	
 	private int numShips;
 	private  int numSelfShipsSunk;
 	private  int numEnemyShipsSunk;
-	
 	public PlayerData(int attackGrid [][] , int battleGrid [][], int numShips, int numSelfShipsSunk, int numEnemyShipsSunk ) {
 		this.attackGrid = attackGrid;
 		this.selfGrid = battleGrid;
@@ -15,15 +15,46 @@ public class PlayerData {
 		this.numSelfShipsSunk = numSelfShipsSunk;
 		this.numEnemyShipsSunk = numEnemyShipsSunk;
 	}
-	
-	public PlayerData() {
-		this.attackGrid =  new int [10][10];
-		this.selfGrid = new int [10][10];
-		this.numShips = 5;  //each player starts with 5 ships per assignment instructions
-		this.numSelfShipsSunk = 0;
-		this.numEnemyShipsSunk = 0;
-	}
-	
+        public PlayerData(){
+            for(int i = 0; i < 10; i++)
+                for(int j = 0; j < 10; j++)
+                    attackGrid[i][j] = 0;
+            for(int k = 0; k < 10; k++)
+                for(int m = 0; m < 10; m++)
+                    if (k == m)
+                        selfGrid[k][m] = 0;
+                    else
+                       selfGrid[k][m] = 0; 
+            numShips = 0;
+            numSelfShipsSunk = 0;
+            numEnemyShipsSunk = 0;
+        }
+      //  public void setShip(int i, int j){
+                   
+        //}
+        public void assignShip(int i, int j){
+            if(j == 8 && selfGrid[i][j] != 1 && selfGrid[i][j-1] != 1 &&  selfGrid[i][j+1] != 1 ){
+                selfGrid[i][j] = 1;
+                selfGrid[i][j-1] = 1;
+                selfGrid[i][j+1] = 1;
+             }
+            if(j == 9 && selfGrid[i][j] != 1 && selfGrid[i][j-1] != 1 &&  selfGrid[i][j-2] != 1 ){
+                selfGrid[i][j] = 1;
+                selfGrid[i][j-1] = 1;
+                selfGrid[i][j-2] = 1;
+            }
+            if(selfGrid[i][j] != 1 && selfGrid[i][j+1] != 1 &&  selfGrid[i][j+2] != 1  ){
+                selfGrid[i][j] = 1;
+                selfGrid[i][j+1] = 1;
+                selfGrid[i][j+2] = 1;
+            }
+        }
+        public int getSelfGridContent(int i, int j){
+            return this.selfGrid[i][j];
+        }
+	public int getAttackGridContent(int i, int j){
+            return this.attackGrid[i][j];
+        }
 	public int[][] getAttackGrid() {
 		return attackGrid;
 	}
@@ -39,8 +70,8 @@ public class PlayerData {
 	public int getNumShips() {
 		return numShips;
 	}
-	public void setNumShips(int numShips) {
-		this.numShips = numShips;
+	public void addShip() {
+		this.numShips++;
 	}
 	public int getNumSelfShipsSunk() {
 		return numSelfShipsSunk;
@@ -54,5 +85,6 @@ public class PlayerData {
 	public void setNumEnemyShipsSunk(int numEnemyShipsSunk) {
 		this.numEnemyShipsSunk = numEnemyShipsSunk;
 	}
-	
 }
+
+	

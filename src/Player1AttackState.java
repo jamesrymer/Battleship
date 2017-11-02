@@ -10,7 +10,6 @@ public class Player1AttackState implements State{
 		//then set wrapper class state to player2attack if game is not over
 		//myShip.setState(new Player2AttackState());
 		System.out.println(myShip.getState());
-
 	}
 	public void nextState(BattleShip myShip){
 		myShip.setState(new Player2AttackState());

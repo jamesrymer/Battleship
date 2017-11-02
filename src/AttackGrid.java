@@ -9,18 +9,18 @@ Represents the grid the player is attacking
 
 */
 public class AttackGrid extends BattleGrid {
-    public AttackGrid(String name) {
-        super();
+    public AttackGrid(String name, PlayerData p) {
+        super(p);
         
     }
 
     @Override
-    protected JPanel getCell()
+    protected JPanel getCell(int i, int j)
     {
         JPanel panel = new JPanel();
         panel.setBackground(Color.white);
-        panel.setBorder(BorderFactory.createLineBorder(Color.red, 5));
-        panel.setPreferredSize(new Dimension(20, 20)); // for demo purposes only
+        panel.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+        panel.setPreferredSize(new Dimension(50, 50)); // for demo purposes only
         panel.addMouseListener(new MouseAdapter() { 
             public void mouseClicked(MouseEvent me) { 
                 System.out.println("you clicked attack cell"); 

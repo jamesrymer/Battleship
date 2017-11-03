@@ -9,9 +9,11 @@ Represents the player's own grid
 */
 public class SelfGrid extends BattleGrid {
 	String currentState;
+	BattleShip thisGame;
     public SelfGrid(String name, PlayerData p, BattleShip myGame) {
         super(p);
         currentState = myGame.getState();
+        thisGame = myGame;
     }
     
 
@@ -32,6 +34,11 @@ public class SelfGrid extends BattleGrid {
             	if(currentState == "Player1SetupState" || currentState == "Player2SetupState"){
             		System.out.println("you clicked self cell"); 
             		player.assignShip(i,j);
+            		player.addShip();
+            		//call screen ctor again
+            		
+            		thisGame.redrawScreen();
+            		
             	}
               } 
             });

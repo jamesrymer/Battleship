@@ -27,7 +27,7 @@ public class PlayerData {
 					selfGrid[k][m] = 0;
 				else
 					selfGrid[k][m] = 0; 
-		numShips = 5;
+		numShips = 0;
 		numSelfShipsSunk = 0;
 		numEnemyShipsSunk = 0;
 	}
@@ -35,26 +35,27 @@ public class PlayerData {
 
 		//}
 	public void assignShip(int i, int j){
-		if(j == 8 && selfGrid[i][j] != 1 && selfGrid[i][j-1] != 1 &&  selfGrid[i][j+1] != 1 ){
-			selfGrid[i][j] = 1;
-			selfGrid[i][j-1] = 1;
-			selfGrid[i][j+1] = 1;
-			System.out.println("ship assigned...");
-			//panel.setBackground(Color.RED);
-		}
-		if(j == 9 && selfGrid[i][j] != 1 && selfGrid[i][j-1] != 1 &&  selfGrid[i][j-2] != 1 ){
-			selfGrid[i][j] = 1;
-			selfGrid[i][j-1] = 1;
-			selfGrid[i][j-2] = 1;
-			System.out.println("ship assigned...");
+		if(numShips < 5){
+			if(j == 8 && selfGrid[i][j] != 1 && selfGrid[i][j-1] != 1 &&  selfGrid[i][j+1] != 1 ){
+				selfGrid[i][j] = 1;
+				selfGrid[i][j-1] = 1;
+				selfGrid[i][j+1] = 1;
+				System.out.println("ship assigned...");
+				//panel.setBackground(Color.RED);
+			}
+			if(j == 9 && selfGrid[i][j] != 1 && selfGrid[i][j-1] != 1 &&  selfGrid[i][j-2] != 1 ){
+				selfGrid[i][j] = 1;
+				selfGrid[i][j-1] = 1;
+				selfGrid[i][j-2] = 1;
+				System.out.println("ship assigned...");
 
-		}
-		if(selfGrid[i][j] != 1 && selfGrid[i][j+1] != 1 &&  selfGrid[i][j+2] != 1  ){
-			selfGrid[i][j] = 1;
-			selfGrid[i][j+1] = 1;
-			selfGrid[i][j+2] = 1;
-			System.out.println("ship assigned...");
-
+			}
+			if(selfGrid[i][j] != 1 && selfGrid[i][j+1] != 1 &&  selfGrid[i][j+2] != 1  ){
+				selfGrid[i][j] = 1;
+				selfGrid[i][j+1] = 1;
+				selfGrid[i][j+2] = 1;
+				System.out.println("ship assigned...");
+			}
 		}
 	}
 	public int getSelfGridContent(int i, int j){
@@ -79,7 +80,9 @@ public class PlayerData {
 		return numShips;
 	}
 	public void addShip() {
-		this.numShips++;
+		if(numShips<5){
+			this.numShips++;
+		}
 	}
 	public int getNumSelfShipsSunk() {
 		return numSelfShipsSunk;
@@ -94,7 +97,16 @@ public class PlayerData {
 		this.numEnemyShipsSunk = numEnemyShipsSunk;
 	}
 	public void recordAttack(int i, int j){
-		selfGrid[i][j] = 0;  //change a ship to an empty spot, simplest way to record destruction for now
+		selfGrid[i][j] = 0; //change a ship to an empty spot, simplest way to record destruction for now
+	}
+	public boolean checkGameOver(){
+		for(int i=0; i<10; i++){
+			for(int j=0; j<10; j++){
+				if(selfGrid[i][j]==1)
+					return false;
+			}
+		}
+		return true;
 	}
 }
 

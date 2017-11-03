@@ -12,7 +12,9 @@ public class Player2AttackState implements State{
 		myShip.player2Attack();
 	}
 	public void nextState(BattleShip myShip){
-		myShip.setState(new Player1AttackState());
+		if(myShip.player1Data.checkGameOver()==false)
+			myShip.setState(new Player1AttackState());
+		else myShip.setState(new GameOverState());
 		myShip.play();
 	}
 }

@@ -13,7 +13,9 @@ public class Player1AttackState implements State{
 		System.out.println(myShip.getState());
 	}
 	public void nextState(BattleShip myShip){
-		myShip.setState(new Player2AttackState());
+		if(myShip.player2Data.checkGameOver()==false)
+			myShip.setState(new Player2AttackState());
+		else myShip.setState(new GameOverState());
 		myShip.play();
 	}
 }

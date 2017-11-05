@@ -102,9 +102,10 @@ public class PlayerData {
 		this.numSelfShipsSunk = numSelfShipsSunk;
 	}
 	public int getNumEnemyShipsSunk() {
+		
 		return numEnemyShipsSunk;
 	}
-	public void setNumEnemyShipsSunk(int numEnemyShipsSunk) {
+	private void setNumEnemyShipsSunk(int numEnemyShipsSunk) {
 		this.numEnemyShipsSunk = numEnemyShipsSunk;
 	}
 	public void recordAttack(int i, int j){

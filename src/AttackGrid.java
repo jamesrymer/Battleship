@@ -13,9 +13,24 @@ public class AttackGrid extends BattleGrid {
 	PlayerData opponentData;
 	PlayerData selfData;
 	BattleShip thisGame;
+	Boolean shotUsed;  //boolean to record if player has used their one shot, if so no more shots allowed
 	
 	
-	
+    public AttackGrid(String name, PlayerData p, BattleShip myGame, boolean thisShotUsed) {
+        super(p);
+        currentState = myGame.getState();
+        if(currentState == "Player1AttackState"){
+        	opponentData = myGame.getData(2);
+        	selfData = myGame.getData(1);
+        }
+        if(currentState == "Player2AttackState"){
+        	opponentData = myGame.getData(1);
+        	selfData = myGame.getData(2);
+        }
+        thisGame = myGame;
+        shotUsed = thisShotUsed;
+        
+    }
     public AttackGrid(String name, PlayerData p, BattleShip myGame) {
         super(p);
         currentState = myGame.getState();
@@ -28,6 +43,7 @@ public class AttackGrid extends BattleGrid {
         	selfData = myGame.getData(2);
         }
         thisGame = myGame;
+        shotUsed = false;
         
     }
     
@@ -50,7 +66,7 @@ public class AttackGrid extends BattleGrid {
         }
         panel.addMouseListener(new MouseAdapter() { 
             public void mouseClicked(MouseEvent me) { 
-            	if(currentState == "Player1AttackState" || currentState == "Player2AttackState"){
+            	if((currentState == "Player1AttackState" || currentState == "Player2AttackState") && shotUsed==false){
             		System.out.println("you clicked attack cell"); 
             		//put call here to destroy ship if it is on coords
             		if(opponentData.getSelfGridContent(i, j)==1){
@@ -62,7 +78,7 @@ public class AttackGrid extends BattleGrid {
             		} else {
             			selfData.recordMiss(i,j);
             		}
-            		thisGame.redrawScreen();
+            		thisGame.redrawScreenShotUsed(); //redraw the screen without the ability to attack again
             	}
               } 
             });

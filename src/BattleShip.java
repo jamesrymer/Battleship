@@ -25,6 +25,14 @@ public class BattleShip {
 			player1Screen = new PlayerScreen("Player2", true, this);
 		}	
 	}
+	public void redrawScreenShotUsed(){
+		if(state.toString() == "Player1SetupState" || state.toString() == "Player1AttackState"){
+			player1Screen = new PlayerScreen("Player1", true, this, true);
+		}
+		if(state.toString() == "Player2SetupState" || state.toString() == "Player2AttackState"){
+			player1Screen = new PlayerScreen("Player2", true, this, true);
+		}	
+	}
 	public void createPlayer1(){
 		player1Data = new PlayerData();
 		player1Screen = new PlayerScreen("Player1", true, this);

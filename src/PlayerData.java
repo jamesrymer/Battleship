@@ -84,10 +84,21 @@ public class PlayerData {
 			this.numShips++;
 		}
 	}
-	public int getNumSelfShipsSunk() {
+	public int getNumSelfShipsSunk() {  //returns number of players own ships sunk
+		int numOfShips = 0;
+		int numSelfShipsSunk = 0;
+		for(int i = 0; i < 10; i++){
+			for(int j = 0; j < 10; j++)
+				if(selfGrid[i][j] == 1){
+					numOfShips++;
+				}
+		}
+		numOfShips /= 3;
+		numSelfShipsSunk = 5-numOfShips;
+		setNumSelfShipsSunk(numSelfShipsSunk);
 		return numSelfShipsSunk;
 	}
-	public void setNumSelfShipsSunk(int numSelfShipsSunk) {
+	private void setNumSelfShipsSunk(int numSelfShipsSunk) {
 		this.numSelfShipsSunk = numSelfShipsSunk;
 	}
 	public int getNumEnemyShipsSunk() {
@@ -98,6 +109,7 @@ public class PlayerData {
 	}
 	public void recordAttack(int i, int j){
 		selfGrid[i][j] = 0; //change a ship to an empty spot, simplest way to record destruction for now
+		
 	}
 	public boolean checkGameOver(){
 		for(int i=0; i<10; i++){
@@ -107,6 +119,15 @@ public class PlayerData {
 			}
 		}
 		return true;
+	}
+
+	public void recordMiss(int i, int j) {
+		attackGrid[i][j] = 2;
+	}
+
+	public void recordHit(int i, int j) {
+		attackGrid[i][j] = 1;
+		
 	}
 }
 

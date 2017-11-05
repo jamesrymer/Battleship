@@ -15,6 +15,7 @@ public class Player2AttackState implements State{
 		if(myShip.player1Data.checkGameOver()==false)
 			myShip.setState(new Player1AttackState());
 		else myShip.setState(new GameOverState());
+		myShip.setResult("Player 2 Wins!!!");
 		myShip.play();
 	}
 }

@@ -11,6 +11,9 @@ Represents the grid the player is attacking
 public class AttackGrid extends BattleGrid {
 	String currentState;
 	PlayerData opponentData;
+	PlayerData selfData;
+	BattleShip thisGame;
+	
 	
 	
     public AttackGrid(String name, PlayerData p, BattleShip myGame) {
@@ -18,10 +21,13 @@ public class AttackGrid extends BattleGrid {
         currentState = myGame.getState();
         if(currentState == "Player1AttackState"){
         	opponentData = myGame.getData(2);
+        	selfData = myGame.getData(1);
         }
         if(currentState == "Player2AttackState"){
         	opponentData = myGame.getData(1);
+        	selfData = myGame.getData(2);
         }
+        thisGame = myGame;
         
     }
     
@@ -37,6 +43,11 @@ public class AttackGrid extends BattleGrid {
         panel.setBackground(Color.white);
         panel.setBorder(BorderFactory.createLineBorder(Color.red, 1));
         panel.setPreferredSize(new Dimension(50, 50)); // for demo purposes only
+        if(player.getAttackGridContent(i, j) == 1){
+        	panel.setBackground(Color.red);
+        } else if(player.getAttackGridContent(i,j) == 2){
+        	panel.setBackground(Color.blue);
+        }
         panel.addMouseListener(new MouseAdapter() { 
             public void mouseClicked(MouseEvent me) { 
             	if(currentState == "Player1AttackState" || currentState == "Player2AttackState"){
@@ -47,7 +58,11 @@ public class AttackGrid extends BattleGrid {
             			System.out.println("ship detected at point of attack!");
             			//processAttack(i, j);
             			opponentData.recordAttack(i, j);
+            			selfData.recordHit(i,j);
+            		} else {
+            			selfData.recordMiss(i,j);
             		}
+            		thisGame.redrawScreen();
             	}
               } 
             });

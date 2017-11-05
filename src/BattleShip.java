@@ -2,16 +2,20 @@
 public class BattleShip {
 	
 	public State state;
+	public String result;
 	
 	//player data
-	
 	PlayerData player1Data;
 	PlayerData player2Data;
 	
-	//player screen
+	//player screens and gameover screen
 	PlayerScreen player1Screen;
 	PlayerScreen player2Screen; //we can probably just use one screen and reference different data depending on the name we pass in 
 	PlayerScreen gameOverScreen; //just for displaying game over stuff
+	
+	public void setResult(String currentResult){
+		this.result = currentResult;
+	}
 	
 	public void redrawScreen(){
 		if(state.toString() == "Player1SetupState" || state.toString() == "Player1AttackState"){
@@ -36,7 +40,7 @@ public class BattleShip {
 		player2Screen = new PlayerScreen("Player2", true, this);
 	}
 	public void gameOver(){
-		gameOverScreen = new PlayerScreen("GAME OVER", true, this);
+		GameOverScreen gameIsOver = new GameOverScreen("GAME OVER", true, result);
 	}
 	private BattleShip(State state){
 		this.state = state;

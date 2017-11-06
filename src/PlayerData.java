@@ -85,15 +85,15 @@ public class PlayerData {
 		}
 	}
 	public int getNumSelfShipsSunk() {  //returns number of players own ships sunk
-		int numOfShips = 0;
-		int numSelfShipsSunk = 0;
+		int numOfShips = 0; //set number of ships to zero before counting them
+		int numSelfShipsSunk = 0; //set number of ships sunk to zero before counting them
 		for(int i = 0; i < 10; i++){
 			for(int j = 0; j < 10; j++)
 				if(selfGrid[i][j] == 1){
-					numOfShips++;
+					numOfShips++; //count up grids with ship on them
 				}
 		}
-		numOfShips /= 3;
+		numOfShips = (numOfShips+2)/3; //divide total number of squares with ships on them by 3 for rough count of ships
 		numSelfShipsSunk = 5-numOfShips;
 		setNumSelfShipsSunk(numSelfShipsSunk);
 		return numSelfShipsSunk;

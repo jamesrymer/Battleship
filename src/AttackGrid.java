@@ -60,9 +60,9 @@ public class AttackGrid extends BattleGrid {
         panel.setBorder(BorderFactory.createLineBorder(Color.red, 1));
         panel.setPreferredSize(new Dimension(50, 50)); // for demo purposes only
         if(player.getAttackGridContent(i, j) == 1){
-        	panel.setBackground(Color.red);
+        	panel.setBackground(Color.green);
         } else if(player.getAttackGridContent(i,j) == 2){
-        	panel.setBackground(Color.blue);
+        	panel.setBackground(Color.red);
         }
         panel.addMouseListener(new MouseAdapter() { 
             public void mouseClicked(MouseEvent me) { 

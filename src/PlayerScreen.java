@@ -11,11 +11,16 @@ public class PlayerScreen extends JFrame {
     public PlayerScreen(String name, boolean show, BattleShip thisGame) {
         super("BATTLESHIP");
         PlayerData screenData = new PlayerData();   
+        PlayerData opponentData = new PlayerData();
 	    if(name == "Player1"){   //copy over the appropriate data for the given player to populate screen
 	    	screenData = thisGame.getData(1);
+	    	if(thisGame.state.toString()=="Player1AttackState"){
+	    		opponentData = thisGame.getData(2);
+	    	}
 	    }
 	    if(name == "Player2"){
 	    	screenData = thisGame.getData(2);
+	    	opponentData = thisGame.getData(1);
 	    }
         this.setLayout(new BorderLayout());	
         Container paneWest = new Container();
@@ -28,7 +33,7 @@ public class PlayerScreen extends JFrame {
         JLabel labelShips= new JLabel("Number of Own Ships Sunk:  " + screenData.getNumSelfShipsSunk());
         JLabel displayShips = new JLabel(String.valueOf(screenData.getNumSelfShipsSunk()));
 	    
-        JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:  " + screenData.getNumEnemyShipsSunk());
+        JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:  " + opponentData.getNumSelfShipsSunk());
         JLabel displaySunk = new JLabel(String.valueOf(screenData.getNumEnemyShipsSunk()));
 	    
         JLabel stateLabel = new JLabel("Current State:  " + thisGame.getState());
@@ -86,11 +91,17 @@ public class PlayerScreen extends JFrame {
     public PlayerScreen(String name, boolean show, BattleShip thisGame, boolean shotStatus) {
         super("BATTLESHIP");
         PlayerData screenData = new PlayerData();   
+        PlayerData opponentData = new PlayerData();
+
 	    if(name == "Player1"){   //copy over the appropriate data for the given player to populate screen
 	    	screenData = thisGame.getData(1);
+	    	if(thisGame.state.toString()=="Player1AttackState"){
+	    		opponentData = thisGame.getData(2);
+	    	}
 	    }
 	    if(name == "Player2"){
 	    	screenData = thisGame.getData(2);
+	    	opponentData = thisGame.getData(1);
 	    }
         this.setLayout(new BorderLayout());	
         Container paneWest = new Container();
@@ -103,7 +114,7 @@ public class PlayerScreen extends JFrame {
         JLabel labelShips= new JLabel("Number of Own Ships Sunk:  " + screenData.getNumSelfShipsSunk());
         JLabel displayShips = new JLabel(String.valueOf(screenData.getNumSelfShipsSunk()));
 	    
-        JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:  " + screenData.getNumEnemyShipsSunk());
+        JLabel labelSunk = new JLabel("Number of Enemy Ships Sunk:  " + opponentData.getNumSelfShipsSunk());
         JLabel displaySunk = new JLabel(String.valueOf(screenData.getNumEnemyShipsSunk()));
 	    
         JLabel stateLabel = new JLabel("Current State:  " + thisGame.getState());
